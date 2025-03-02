@@ -1,0 +1,32 @@
+{
+  "name": "fullstack-open-part9-typescript-bmi-calculator",
+  "version": "1.0.0",
+  "description": "Fullstack Open - Typescript project that calculates BMI and returns a message",
+  "license": "ISC",
+  "author": "Feerdus95",
+  "type": "commonjs",
+  "main": "bmiCalculator.js",
+  "scripts": {
+      "dev": "ts-node-dev index.ts",
+      "start": "node dist/index.ts",
+      "build": "tsc",
+      "calculateBmi": "npm run build && node dist/bmiCalculator.js",
+      "calculateExercises": "npm run build && node dist/exerciseCalculator.js",
+      "lint": "eslint .",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@stylistic/eslint-plugin": "^4.1.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.8",
+    "eslint": "^9.21.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.25.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
