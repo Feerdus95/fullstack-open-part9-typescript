@@ -1,4 +1,4 @@
-# Full Stack Open Part 9 - Exercises 9.1 to 9.7
+# Full Stack Open Part 9 - Exercises 9.1 to 9.14
 
 This project implements a simple API for calculating BMI and exercise statistics, built with TypeScript and Express.
 
@@ -43,6 +43,69 @@ This project implements a simple API for calculating BMI and exercise statistics
   ```
 - **Error Handling**:
   - Returns `400 Bad Request` with an error message if parameters are missing or malformed.
+
+## Exercises 9.8 to 9.14: Patientor Backend
+
+### Overview
+The Patientor backend is a TypeScript-based Express application that provides API endpoints for managing patient and diagnosis data. It includes features such as data validation, type safety, and CORS support.
+
+### Features Implemented
+1. **Exercise 9.8**: Initialized the backend project with TypeScript and Express.
+2. **Exercise 9.9**: Created a `GET /api/ping` endpoint to confirm the server is running.
+3. **Exercise 9.10**: Added a `GET /api/diagnoses` endpoint to fetch all diagnoses.
+4. **Exercise 9.11**: Added a `GET /api/patients` endpoint to fetch all patients, excluding the `ssn` field.
+5. **Exercise 9.12**: Implemented a `POST /api/patients` endpoint to add new patients.
+6. **Exercise 9.13**: Refactored the `gender` field to use an enum for type safety.
+7. **Exercise 9.14**: Used Zod to validate requests to the `POST /api/patients` endpoint.
+
+### Running the Backend
+1. Navigate to the `patientor-backend` directory:
+   ```bash
+   cd exercises-9.8-9.14/patientor-backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. The server will run on port `3001`.
+
+### API Endpoints
+- **GET /api/ping**: Confirms the server is running.
+- **GET /api/diagnoses**: Fetches all diagnoses.
+- **GET /api/patients**: Fetches all patients, excluding the `ssn` field.
+- **POST /api/patients**: Adds a new patient. Requires the following fields:
+  - `name`: String (required)
+  - `dateOfBirth`: String (required)
+  - `ssn`: String (optional)
+  - `gender`: Enum (`male`, `female`, `other`) (required)
+  - `occupation`: String (required)
+
+### Data Structures
+- **Patient**:
+  ```typescript
+  interface Patient {
+    id: string;
+    name: string;
+    dateOfBirth: string;
+    ssn?: string;
+    gender: Gender;
+    occupation: string;
+  }
+  ```
+- **PublicPatient**: A type that excludes the `ssn` field from [Patient](cci:2://file:///c:/Users/Fer/Documents/FullStack-Open/fullstack-open-part9-typescript/exercises-9.8-9.14/patientor-backend/src/types/patient.ts:8:0-15:1).
+
+### Validation
+The `POST /api/patients` endpoint uses Zod for validation. The schema ensures all required fields are present and valid.
+
+### Dependencies
+- `express`: Web framework for Node.js.
+- `typescript`: Adds type safety to JavaScript.
+- `zod`: Library for schema validation.
+- `uuid`: Generates unique IDs for patients.
 
 ## Setup
 
