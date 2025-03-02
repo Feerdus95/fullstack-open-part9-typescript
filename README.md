@@ -1,4 +1,4 @@
-# Full Stack Open Part 9 - Exercises 9.1 to 9.14
+# Full Stack Open Part 9 - Exercises 9.1 to 9.20
 
 This project implements a simple API for calculating BMI and exercise statistics, built with TypeScript and Express.
 
@@ -96,16 +96,79 @@ The Patientor backend is a TypeScript-based Express application that provides AP
     occupation: string;
   }
   ```
-- **PublicPatient**: A type that excludes the `ssn` field from [Patient](cci:2://file:///c:/Users/Fer/Documents/FullStack-Open/fullstack-open-part9-typescript/exercises-9.8-9.14/patientor-backend/src/types/patient.ts:8:0-15:1).
+- **PublicPatient**: A type that excludes the `ssn` field from Patient.
 
 ### Validation
 The `POST /api/patients` endpoint uses Zod for validation. The schema ensures all required fields are present and valid.
 
-### Dependencies
-- `express`: Web framework for Node.js.
-- `typescript`: Adds type safety to JavaScript.
-- `zod`: Library for schema validation.
-- `uuid`: Generates unique IDs for patients.
+## Exercises 9.15 to 9.20: Flight Diary Application
+
+### Overview
+The Flight Diary application is a full-stack TypeScript project consisting of a backend API and a React frontend. It allows users to manage flight diary entries with proper type safety and validation.
+
+### Features Implemented
+1. **Exercise 9.15**: Set up the flight diary backend with TypeScript.
+2. **Exercise 9.16**: Implemented backend validation for diary entries.
+3. **Exercise 9.17**: Created the frontend with React and TypeScript.
+4. **Exercise 9.18**: Added functionality to fetch and display diary entries.
+5. **Exercise 9.19**: Implemented form validation and error handling.
+6. **Exercise 9.20**: Enhanced the UI with styling and user feedback.
+
+### Running the Application
+
+#### Backend
+1. Navigate to the flight diary backend directory:
+   ```bash
+   cd exercises-9.15-9.20/flight-diary-back
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+#### Frontend
+1. Navigate to the flight diary frontend directory:
+   ```bash
+   cd exercises-9.15-9.20/flight-diary-front
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### API Endpoints
+- **GET /api/diaries**: Fetches all diary entries
+- **POST /api/diaries**: Adds a new diary entry with the following fields:
+  - `date`: String (YYYY-MM-DD format)
+  - `visibility`: String (enum: 'great' | 'good' | 'ok' | 'poor')
+  - `weather`: String (enum: 'sunny' | 'rainy' | 'cloudy' | 'stormy' | 'windy')
+  - `comment`: String
+
+### Data Structures
+- **DiaryEntry**:
+  ```typescript
+  interface DiaryEntry {
+    id: number;
+    date: string;
+    weather: Weather;
+    visibility: Visibility;
+    comment: string;
+  }
+  ```
+
+### Frontend Features
+- Responsive design with modern UI components
+- Real-time form validation
+- Error handling with user-friendly messages
+- Type-safe API communication
 
 ## Setup
 
@@ -133,6 +196,8 @@ The `POST /api/patients` endpoint uses Zod for validation. The schema ensures al
 - **TypeScript**: For type safety and modern JavaScript features.
 - **Express**: For building the API.
 - **ESLint**: For code linting and style enforcement.
+- **React**: For building the frontend user interface.
+- **Zod**: For runtime type validation.
 
 ## Directory Structure
 - `src/`: Contains TypeScript source files.
