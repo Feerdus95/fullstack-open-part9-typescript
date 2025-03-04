@@ -1,4 +1,4 @@
-# Full Stack Open Part 9 - Exercises 9.1 to 9.20
+# Full Stack Open Part 9 - TypeScript Exercises 9.1 to 9.30
 
 This project implements a simple API for calculating BMI and exercise statistics, built with TypeScript and Express.
 
@@ -169,6 +169,99 @@ The Flight Diary application is a full-stack TypeScript project consisting of a 
 - Real-time form validation
 - Error handling with user-friendly messages
 - Type-safe API communication
+
+## Exercises 9.21 to 9.30: Enhanced Patientor Application
+
+### Overview
+The Enhanced Patientor application builds upon the previous version, adding support for different types of entries (Hospital, OccupationalHealthcare) and improving the user interface. The application demonstrates advanced TypeScript features and proper type safety implementation.
+
+### Features Implemented
+1. **Exercise 9.21-9.24**: Enhanced the data structure with new entry types
+   - Added support for Hospital entries
+   - Implemented OccupationalHealthcare entries
+   - Created type guards for different entry types
+   - Updated the backend to handle the new entry types
+
+2. **Exercise 9.25-9.27**: Improved frontend functionality
+   - Implemented entry listing in patient page
+   - Added entry details display with type-specific information
+   - Enhanced type safety with proper discriminated unions
+
+3. **Exercise 9.28-9.30**: Added entry creation functionality
+   - Implemented form for adding new entries
+   - Added validation for entry-specific fields
+   - Enhanced error handling and user feedback
+
+### Running the Enhanced Application
+
+#### Backend
+1. Navigate to the patientor backend directory:
+   ```bash
+   cd exercises-9.21-9.30/patientor-backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+#### Frontend
+1. Navigate to the patientor frontend directory:
+   ```bash
+   cd exercises-9.21-9.30/patientor-frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### New Data Structures
+- **Entry Types**:
+  ```typescript
+  interface BaseEntry {
+    id: string;
+    description: string;
+    date: string;
+    specialist: string;
+    diagnosisCodes?: Array<string>;
+  }
+
+  interface HospitalEntry extends BaseEntry {
+    type: "Hospital";
+    discharge: {
+      date: string;
+      criteria: string;
+    };
+  }
+
+  interface OccupationalHealthcareEntry extends BaseEntry {
+    type: "OccupationalHealthcare";
+    employerName: string;
+    sickLeave?: {
+      startDate: string;
+      endDate: string;
+    };
+  }
+  ```
+
+### New API Endpoints
+- **GET /api/patients/:id**: Fetches detailed patient information including entries
+- **POST /api/patients/:id/entries**: Adds a new entry to a patient's record
+  - Supports different entry types (Hospital, OccupationalHealthcare)
+  - Includes type-specific validation
+
+### Enhanced Frontend Features
+- Type-safe entry handling with discriminated unions
+- Improved UI for displaying different entry types
+- Form validation for entry-specific fields
+- Real-time error handling and user feedback
 
 ## Setup
 
